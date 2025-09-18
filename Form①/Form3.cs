@@ -189,7 +189,7 @@ namespace YourNamespace
         {
             using (var ofd = new OpenFileDialog())
             {
-                ofd.Title = "画像ファイルを選択してください";
+                ofd.Title = "画像ファイルを選択してください。";
                 ofd.Filter = "画像ファイル|*.jpg;*.jpeg;*.png;*.bmp;*.gif";
 
                 if (ofd.ShowDialog() == DialogResult.OK)
