@@ -10,7 +10,7 @@ namespace YourNamespace
         {
             InitializeComponent();
 
-            // 既定は Days
+            
             rdoDays.Checked = true;
             UpdateUnitTitle();
             BuildComboItems();
@@ -20,13 +20,17 @@ namespace YourNamespace
             LoadDefaultImage();
             ApplyPictureBoxSizeMode();
 
-            btnConfirmAll.BackColor = Color.Yellow;
-            btnConfirmAll.ForeColor = Color.Black;
-            btnConfirmAll.Enabled = false;
+           
         }
 
         private void Form3_Load(object sender, EventArgs e)
         {
+            cmbOptions.Enabled = true;
+
+            btnConfirmAll.BackColor = Color.Yellow;
+            btnConfirmAll.ForeColor = Color.Black;
+            btnConfirmAll.Cursor = Cursors.Hand;
+
 
         }
         private void ApplyCheckBoxStates()
@@ -97,14 +101,26 @@ namespace YourNamespace
 
         private void ReflectSelectionToLabel()
         {
-            if (cmbOptions.SelectedItem == null)
+            if (cmbOptions.SelectedItem != null)
             {
-                lblDays.Text = string.Empty;
-                return;
+               var unit = rdoDays.Checked ? "Days" : "Years";
+                label2.Text = cmbOptions.SelectedItem + " " + unit;
+            }
+            else
+            {
+               foreach (Control ctrl in pnlWeek.Controls)
+               {
+                   var r = ctrl as RadioButton;
+                    if (r != null && r.Checked)
+                    {
+                          label2.Text = r.Text;
+                          return;
+                    }
+                }
+                label2.Text = "";
             }
 
-            var unit = rdoDays.Checked ? "Days" : "Years";
-            lblDays.Text = $"{cmbOptions.SelectedItem} {unit}";
+               
         }
 
         private void rdoWeek_CheckedChanged(object sender, EventArgs e)
@@ -112,7 +128,7 @@ namespace YourNamespace
             var rb = sender as RadioButton;
             if (rb != null && rb.Checked)
             {
-                lblDays.Text = rb.Text;
+                label2.Text = rb.Text;
             }
         }
 
@@ -134,7 +150,7 @@ namespace YourNamespace
                     ? $"選択されている曜日：{selected}"
                     : "曜日はまだ選択されていません");
 
-                chkRadioConfirm.Checked = false; 
+                
             }
 
             ApplyCheckBoxStates();
@@ -153,7 +169,7 @@ namespace YourNamespace
                 {
                     MessageBox.Show("コンボボックスが未選択です");
                 }
-                chkComboConfirm.Checked = false;
+                
             }
 
             ApplyCheckBoxStates();
@@ -161,12 +177,14 @@ namespace YourNamespace
 
         private void chkLabelConfirm_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkLabelConfirm.Checked)
-            {
-                MessageBox.Show(
-                    string.IsNullOrEmpty(lblDays.Text) ? "ラベルは空です" : $"現在のラベルの内容：{lblDays.Text}");
-                chkLabelConfirm.Checked = false;
-            }
+            if (!chkLabelConfirm.Checked) return;
+
+            if (!string.IsNullOrEmpty(lblDays.Text))
+                MessageBox.Show($"現在のラベルの内容: {lblDays.Text}");
+            else
+                MessageBox.Show("ラベルは空です");
+
+            
 
             ApplyCheckBoxStates();
         }

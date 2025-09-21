@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.lblDays = new System.Windows.Forms.Label();
             this.cmbOptions = new System.Windows.Forms.ComboBox();
             this.chkComboConfirm = new System.Windows.Forms.CheckBox();
@@ -54,7 +55,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.pic = new System.Windows.Forms.PictureBox();
             this.btnLoadImage = new System.Windows.Forms.Button();
-            this.chkDays = new System.Windows.Forms.CheckBox();
             this.pnlWeek.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -358,17 +358,6 @@
             this.btnLoadImage.UseVisualStyleBackColor = true;
             this.btnLoadImage.Click += new System.EventHandler(this.btnLoadImage_Click);
             // 
-            // chkDays
-            // 
-            this.chkDays.AutoSize = true;
-            this.chkDays.Location = new System.Drawing.Point(287, 124);
-            this.chkDays.Name = "chkDays";
-            this.chkDays.Size = new System.Drawing.Size(72, 22);
-            this.chkDays.TabIndex = 8;
-            this.chkDays.Text = "Days";
-            this.chkDays.UseVisualStyleBackColor = true;
-            this.chkDays.CheckedChanged += new System.EventHandler(this.chkLabelConfirm_CheckedChanged);
-            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
@@ -381,10 +370,10 @@
             this.Controls.Add(this.rdoStretch);
             this.Controls.Add(this.rdoZoom);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.chkDays);
             this.Controls.Add(this.pnlWeek);
             this.Controls.Add(this.lblResult);
             this.Controls.Add(this.lblDays);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form3";
             this.Text = "Form3";
             this.Load += new System.EventHandler(this.Form3_Load);
@@ -427,7 +416,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pic;
         private System.Windows.Forms.Button btnLoadImage;
-        private System.Windows.Forms.CheckBox chkDays;
         private System.Windows.Forms.Button btnConfirmAll;
     }
 }

@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Button btnGreen;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnGoForm2 = new System.Windows.Forms.Button();
             this.lblFileContact = new System.Windows.Forms.Label();
             this.lblReturn = new System.Windows.Forms.Label();
@@ -58,6 +59,7 @@
             btnGreen.TabIndex = 9;
             btnGreen.Text = "Green";
             btnGreen.UseVisualStyleBackColor = false;
+            btnGreen.Click += new System.EventHandler(this.btnGreen_Click);
             // 
             // btnGoForm2
             // 
@@ -158,6 +160,7 @@
             this.btnBlue.TabIndex = 10;
             this.btnBlue.Text = "Blue";
             this.btnBlue.UseVisualStyleBackColor = false;
+            this.btnBlue.Click += new System.EventHandler(this.btnBlue_Click);
             // 
             // lblClock
             // 
@@ -225,6 +228,7 @@
             this.Controls.Add(this.lblReturn);
             this.Controls.Add(this.lblFileContact);
             this.Controls.Add(this.btnGoForm2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);

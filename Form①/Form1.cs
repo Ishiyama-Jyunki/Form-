@@ -18,19 +18,35 @@ namespace Form_
         {
             InitializeComponent();
             btnGoForm3.Cursor = Cursors.Hand;
+
+            tmrClock.Interval = 1000;
+            tmrClock.Start();
             lblClock.Text = "00:00:00";
+        }
+
+        private void tmrClock_Tick(object sender, EventArgs e)
+        {
+            lblClock.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
         private void btnGoForm2_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Form2を開きます。よろしいですか？", "確認",
+                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) return;
+
+
             using (var f2 = new Form2(lblFileContact.Text))
             {
-                if (f2.ShowDialog() == DialogResult.OK)
-                {
-                    lblReturn.Text = f2.ReturnValue;
-                }
+                    if (f2.ShowDialog(this) == DialogResult.OK)
+                    {
+
+
+                        lblReturn.Text = f2.ReturnValue;
+                    }
             }
         }
+
+        
 
         private void btnSelectFile_Click(object sender, EventArgs e)
         {
@@ -61,7 +77,6 @@ namespace Form_
                     return;
                 }
 
-                // 確認ダイアログ
                 if (MessageBox.Show("書き換えしてよろしいですか？", "確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
                     != DialogResult.OK)
                 {
@@ -123,7 +138,15 @@ namespace Form_
             lblReturn.BackColor = Color.Aqua;
         }
 
-        private void tmrClock_Tick(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            tmrClock.Interval = 1000;
+            tmrClock.Enabled = true;
+            lblClock.AutoSize = false;
+            lblClock.TextAlign = ContentAlignment.MiddleCenter;
+        }
+
+        private void TmrClock_Tick(object sender, EventArgs e)
         {
             lblClock.Text = DateTime.Now.ToString("HH:mm:ss");
             lblClock.Invalidate(); 
@@ -151,6 +174,9 @@ namespace Form_
 
         private void btnGoForm3_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Form3を開きます。よろしいですか？", "確認",
+                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) return;
+
             using (var f3 = new Form3())
             {
                 f3.ShowDialog(this);

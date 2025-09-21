@@ -57,12 +57,7 @@ namespace Form_
 
         private void btnTrimAll_Click(object sender, EventArgs e)
         {
-            foreach (var tb in new[] { txt1, txt2, txt3, txt4 })
-            {
-                var t = tb.Text ?? "";
-                t = t.Replace(" ", "").Replace("　", "");
-                tb.Text = t;
-            }
+
         }
 
         private void btnJoin_Click(object sender, EventArgs e)
@@ -96,6 +91,38 @@ namespace Form_
             }
         }
 
+        private void UpdateResult()
+        {
+           rtbResult.Text = $"{txt1.Text},{txt2.Text},{txt3.Text},{txt4.Text}";
+
+           int steps = (int)nudSteps.Value;
+              rtbResult.AppendText($"\nSteps: {steps}");
+        }
+
+        private void txt1_TextChanged(object sender, EventArgs e)
+        {
+            UpdateResult();
+        }
+
+        private void txt2_TextChanged(object sender, EventArgs e)
+        {
+            UpdateResult();
+        }
+
+        private void txt3_TextChanged(object sender, EventArgs e)
+        {
+            UpdateResult();
+        }
+
+        private void txt4_TextChanged(object sender, EventArgs e)
+        {
+            UpdateResult();
+        }
+
+        private void nudSteps_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateResult();
+        }
     }
 
 
