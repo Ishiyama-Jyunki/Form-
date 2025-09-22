@@ -13,10 +13,12 @@ namespace Form_
     public partial class Form2 : Form
     {
         public string ReturnValue { get; private set; } = "";
+        private readonly string _receivedValue;
         public Form2(string formForm1Value)
         {
             InitializeComponent();
-            lblfromForm1.Text = formForm1Value ?? "";
+            lblfromForm1.Text = _receivedValue;
+            _receivedValue = formForm1Value ?? "";
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -45,6 +47,8 @@ namespace Form_
             txt2.Text = p2;
             txt3.Text = p3;
             txt4.Text = p4;
+
+            lblfromForm1.Text = _receivedValue;
         }
 
         private void btnTrimEdge_Click(object sender, EventArgs e)
@@ -121,7 +125,9 @@ namespace Form_
 
         private void nudSteps_ValueChanged(object sender, EventArgs e)
         {
-            UpdateResult();
+            rtbResult.Clear();
+            int steps = (int)nudSteps.Value;
+            rtbResult.AppendText($"Steps: {steps}\n");
         }
     }
 

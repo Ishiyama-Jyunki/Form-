@@ -58,8 +58,25 @@ namespace YourNamespace
 
         private void rdoUnit_CheckedChanged(object sender, EventArgs e)
         {
-            var rb = sender as RadioButton;
-            if (rb == null || !rb.Checked) return;
+            cmbOptions.Items.Clear();
+
+            if (rdoDays.Checked)
+            {
+                cmbOptions.Items.AddRange(new string[]
+                {
+            "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
+                });
+            }
+            else if (rdoYears.Checked)
+            {
+                cmbOptions.Items.AddRange(new string[]
+                {
+            "Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.",
+            "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."
+                });
+            }
+
+            cmbOptions.SelectedIndex = 0; // 初期選択
 
             UpdateUnitTitle();
             BuildComboItems();
@@ -230,6 +247,9 @@ namespace YourNamespace
             btnConfirmAll.ForeColor = Color.Black;
         }
 
-       
+        private void btnConfirmAll_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("チェック完了！");
+        }
     }
 }

@@ -38,11 +38,11 @@ namespace Form_
             using (var f2 = new Form2(lblFileContact.Text))
             {
                     if (f2.ShowDialog(this) == DialogResult.OK)
-                    {
+                    
 
 
-                        lblReturn.Text = f2.ReturnValue;
-                    }
+                        GroupBox1.Text = f2.ReturnValue;
+                    
             }
         }
 
@@ -89,7 +89,7 @@ namespace Form_
                     return;
                 }
 
-                File.WriteAllText(txtFilePath.Text, lblReturn.Text ?? "");
+                File.WriteAllText(txtFilePath.Text, GroupBox1.Text ?? "");
                 MessageBox.Show("更新しました。");
             }
             catch (Exception ex)
@@ -125,17 +125,17 @@ namespace Form_
 
         private void btnYellow_Click(object sender, EventArgs e)
         {
-            lblReturn.BackColor = Color.Yellow;
+            GroupBox1.BackColor = Color.Yellow;
         }
 
         private void btnGreen_Click(object sender, EventArgs e)
         {
-            lblReturn.BackColor = Color.Lime;
+            GroupBox1.BackColor = Color.Lime;
         }
 
         private void btnBlue_Click(object sender, EventArgs e)
         {
-            lblReturn.BackColor = Color.Aqua;
+            GroupBox1.BackColor = Color.Aqua;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -182,5 +182,7 @@ namespace Form_
                 f3.ShowDialog(this);
             }
         }
+
+
     }
 }

@@ -166,7 +166,6 @@
             this.rdoSun.Name = "rdoSun";
             this.rdoSun.Size = new System.Drawing.Size(62, 22);
             this.rdoSun.TabIndex = 6;
-            this.rdoSun.TabStop = true;
             this.rdoSun.Text = "Sun";
             this.rdoSun.UseVisualStyleBackColor = true;
             this.rdoSun.CheckedChanged += new System.EventHandler(this.rdoWeek_CheckedChanged);
@@ -178,7 +177,6 @@
             this.rdoSat.Name = "rdoSat";
             this.rdoSat.Size = new System.Drawing.Size(59, 22);
             this.rdoSat.TabIndex = 5;
-            this.rdoSat.TabStop = true;
             this.rdoSat.Text = "Sat";
             this.rdoSat.UseVisualStyleBackColor = true;
             this.rdoSat.CheckedChanged += new System.EventHandler(this.rdoWeek_CheckedChanged);
@@ -190,7 +188,6 @@
             this.rdoFri.Name = "rdoFri";
             this.rdoFri.Size = new System.Drawing.Size(53, 22);
             this.rdoFri.TabIndex = 4;
-            this.rdoFri.TabStop = true;
             this.rdoFri.Text = "Fri";
             this.rdoFri.UseVisualStyleBackColor = true;
             this.rdoFri.CheckedChanged += new System.EventHandler(this.rdoWeek_CheckedChanged);
@@ -202,7 +199,6 @@
             this.rdoThu.Name = "rdoThu";
             this.rdoThu.Size = new System.Drawing.Size(62, 22);
             this.rdoThu.TabIndex = 3;
-            this.rdoThu.TabStop = true;
             this.rdoThu.Text = "Thu";
             this.rdoThu.UseVisualStyleBackColor = true;
             this.rdoThu.CheckedChanged += new System.EventHandler(this.rdoWeek_CheckedChanged);
@@ -214,7 +210,6 @@
             this.rdoWed.Name = "rdoWed";
             this.rdoWed.Size = new System.Drawing.Size(64, 22);
             this.rdoWed.TabIndex = 2;
-            this.rdoWed.TabStop = true;
             this.rdoWed.Text = "Wed";
             this.rdoWed.UseVisualStyleBackColor = true;
             this.rdoWed.CheckedChanged += new System.EventHandler(this.rdoWeek_CheckedChanged);
@@ -222,12 +217,10 @@
             // rdoTue
             // 
             this.rdoTue.AutoSize = true;
-            this.rdoTue.Checked = true;
             this.rdoTue.Location = new System.Drawing.Point(3, 38);
             this.rdoTue.Name = "rdoTue";
             this.rdoTue.Size = new System.Drawing.Size(62, 22);
             this.rdoTue.TabIndex = 1;
-            this.rdoTue.TabStop = true;
             this.rdoTue.Text = "Tue";
             this.rdoTue.UseVisualStyleBackColor = true;
             this.rdoTue.CheckedChanged += new System.EventHandler(this.rdoWeek_CheckedChanged);
@@ -235,6 +228,7 @@
             // rdoMon
             // 
             this.rdoMon.AutoSize = true;
+            this.rdoMon.Checked = true;
             this.rdoMon.Location = new System.Drawing.Point(3, 10);
             this.rdoMon.Name = "rdoMon";
             this.rdoMon.Size = new System.Drawing.Size(64, 22);
@@ -265,6 +259,7 @@
             this.btnConfirmAll.TabIndex = 18;
             this.btnConfirmAll.Text = "button1";
             this.btnConfirmAll.UseVisualStyleBackColor = false;
+            this.btnConfirmAll.Click += new System.EventHandler(this.btnConfirmAll_Click);
             this.btnConfirmAll.MouseEnter += new System.EventHandler(this.btnConfirmAll_MouseEnter);
             this.btnConfirmAll.MouseLeave += new System.EventHandler(this.btnConfirmAll_MouseLeave);
             // 

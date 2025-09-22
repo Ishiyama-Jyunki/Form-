@@ -33,7 +33,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnGoForm2 = new System.Windows.Forms.Button();
             this.lblFileContact = new System.Windows.Forms.Label();
-            this.lblReturn = new System.Windows.Forms.Label();
             this.txtFilePath = new System.Windows.Forms.TextBox();
             this.lblFileContent = new System.Windows.Forms.Label();
             this.btnSelectFile = new System.Windows.Forms.Button();
@@ -46,7 +45,10 @@
             this.btnGoForm3 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblReturn = new System.Windows.Forms.Label();
             btnGreen = new System.Windows.Forms.Button();
+            this.GroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnGreen
@@ -74,20 +76,11 @@
             // lblFileContact
             // 
             this.lblFileContact.AutoSize = true;
-            this.lblFileContact.Location = new System.Drawing.Point(226, 172);
+            this.lblFileContact.Location = new System.Drawing.Point(375, 145);
             this.lblFileContact.Name = "lblFileContact";
             this.lblFileContact.Size = new System.Drawing.Size(41, 18);
             this.lblFileContact.TabIndex = 1;
             this.lblFileContact.Text = "渡す";
-            // 
-            // lblReturn
-            // 
-            this.lblReturn.AutoSize = true;
-            this.lblReturn.Location = new System.Drawing.Point(40, 153);
-            this.lblReturn.Name = "lblReturn";
-            this.lblReturn.Size = new System.Drawing.Size(44, 18);
-            this.lblReturn.TabIndex = 2;
-            this.lblReturn.Text = "返却";
             // 
             // txtFilePath
             // 
@@ -99,7 +92,7 @@
             // lblFileContent
             // 
             this.lblFileContent.AutoSize = true;
-            this.lblFileContent.Location = new System.Drawing.Point(160, 172);
+            this.lblFileContent.Location = new System.Drawing.Point(375, 98);
             this.lblFileContent.Name = "lblFileContent";
             this.lblFileContent.Size = new System.Drawing.Size(43, 18);
             this.lblFileContent.TabIndex = 4;
@@ -167,7 +160,7 @@
             this.lblClock.BackColor = System.Drawing.Color.Blue;
             this.lblClock.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblClock.ForeColor = System.Drawing.Color.White;
-            this.lblClock.Location = new System.Drawing.Point(40, 240);
+            this.lblClock.Location = new System.Drawing.Point(40, 258);
             this.lblClock.Name = "lblClock";
             this.lblClock.Size = new System.Drawing.Size(361, 146);
             this.lblClock.TabIndex = 11;
@@ -208,11 +201,31 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "ファイル表示：";
             // 
+            // GroupBox1
+            // 
+            this.GroupBox1.Controls.Add(this.lblReturn);
+            this.GroupBox1.Location = new System.Drawing.Point(43, 137);
+            this.GroupBox1.Name = "GroupBox1";
+            this.GroupBox1.Size = new System.Drawing.Size(200, 100);
+            this.GroupBox1.TabIndex = 15;
+            this.GroupBox1.TabStop = false;
+            this.GroupBox1.Text = "返却値";
+            // 
+            // lblReturn
+            // 
+            this.lblReturn.AutoSize = true;
+            this.lblReturn.Location = new System.Drawing.Point(68, 45);
+            this.lblReturn.Name = "lblReturn";
+            this.lblReturn.Size = new System.Drawing.Size(52, 18);
+            this.lblReturn.TabIndex = 16;
+            this.lblReturn.Text = "label3";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnGoForm3);
@@ -225,12 +238,13 @@
             this.Controls.Add(this.btnSelectFile);
             this.Controls.Add(this.lblFileContent);
             this.Controls.Add(this.txtFilePath);
-            this.Controls.Add(this.lblReturn);
             this.Controls.Add(this.lblFileContact);
             this.Controls.Add(this.btnGoForm2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
+            this.GroupBox1.ResumeLayout(false);
+            this.GroupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,7 +254,6 @@
 
         private System.Windows.Forms.Button btnGoForm2;
         private System.Windows.Forms.Label lblFileContact;
-        private System.Windows.Forms.Label lblReturn;
         private System.Windows.Forms.TextBox txtFilePath;
         private System.Windows.Forms.Label lblFileContent;
         private System.Windows.Forms.Button btnSelectFile;
@@ -253,6 +266,8 @@
         private System.Windows.Forms.Button btnGoForm3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox GroupBox1;
+        private System.Windows.Forms.Label lblReturn;
     }
 }
 
