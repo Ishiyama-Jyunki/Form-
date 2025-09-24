@@ -25,17 +25,19 @@ namespace YourNamespace
 
         private void Form3_Load(object sender, EventArgs e)
         {
-            cmbOptions.Enabled = true;
 
             btnConfirmAll.BackColor = Color.Yellow;
             btnConfirmAll.ForeColor = Color.Black;
             btnConfirmAll.Cursor = Cursors.Hand;
 
-
+            if (!rdoDays.Checked && !rdoYears.Checked) rdoDays.Checked = true; 
+            BuildComboItems();           
+            UpdateUnitTitle();
+            cmbOptions.SelectedIndex = -1;
         }
         private void ApplyCheckBoxStates()
         {
-            cmbOptions.Enabled = chkComboConfirm.Checked;
+            
             lblDays.Visible = chkLabelConfirm.Checked;
 
             btnConfirmAll.Enabled =
@@ -58,34 +60,19 @@ namespace YourNamespace
 
         private void rdoUnit_CheckedChanged(object sender, EventArgs e)
         {
-            cmbOptions.Items.Clear();
+            var rb = sender as RadioButton;
+            if (rb == null || !rb.Checked) return;
 
-            if (rdoDays.Checked)
-            {
-                cmbOptions.Items.AddRange(new string[]
-                {
-            "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"
-                });
-            }
-            else if (rdoYears.Checked)
-            {
-                cmbOptions.Items.AddRange(new string[]
-                {
-            "Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.",
-            "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."
-                });
-            }
-
-            cmbOptions.SelectedIndex = 0; // 初期選択
-
-            UpdateUnitTitle();
+           
             BuildComboItems();
-            ReflectSelectionToLabel();
+            cmbOptions.SelectedIndex = -1;
+            UpdateUnitTitle();
         }
 
         private void UpdateUnitTitle()
         {
-            lblUnitTitle.Text = rdoDays.Checked ? "Days" : "Years";
+            lblUnitTitle.Text = cmbOptions.SelectedItem is string s ? s : (rdoDays.Checked ? "Days" : "Years");
+               
         }
 
         private void BuildComboItems()
@@ -94,40 +81,32 @@ namespace YourNamespace
             try
             {
                 cmbOptions.Items.Clear();
-
                 if (rdoDays.Checked)
-                {
-                    cmbOptions.Items.AddRange(WeekDays);
-                }
-                else 
-                {
-                    cmbOptions.Items.AddRange(Months);
-                }
-
-                cmbOptions.SelectedIndex = -1;
+                    cmbOptions.Items.AddRange(new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" });
+                else
+                    cmbOptions.Items.AddRange(new[] { "Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.",
+                                              "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec." });
             }
-            finally
-            {
-                cmbOptions.EndUpdate();
-            }
+            finally { cmbOptions.EndUpdate(); }
 
-            ReflectSelectionToLabel();
+
         }
+
 
         private void cmbOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ReflectSelectionToLabel();
+            UpdateUnitTitle();
         }
 
         private void ReflectSelectionToLabel()
         {
             if (cmbOptions.SelectedItem == null)
             {
-                lblDays.Text = string.Empty;
+                lblUnitTitle.Text = string.Empty;
                 return;
             }
 
-            lblDays.Text = cmbOptions.SelectedItem.ToString();
+            lblUnitTitle.Text = cmbOptions.SelectedItem.ToString();
         }
 
         private void rdoWeek_CheckedChanged(object sender, EventArgs e)

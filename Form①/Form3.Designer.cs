@@ -72,6 +72,7 @@
             // 
             // cmbOptions
             // 
+            this.cmbOptions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbOptions.FormattingEnabled = true;
             this.cmbOptions.Location = new System.Drawing.Point(135, 69);
             this.cmbOptions.Name = "cmbOptions";
