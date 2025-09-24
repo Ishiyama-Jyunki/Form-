@@ -32,7 +32,6 @@
             System.Windows.Forms.Button btnGreen;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnGoForm2 = new System.Windows.Forms.Button();
-            this.lblFileContact = new System.Windows.Forms.Label();
             this.txtFilePath = new System.Windows.Forms.TextBox();
             this.lblFileContent = new System.Windows.Forms.Label();
             this.btnSelectFile = new System.Windows.Forms.Button();
@@ -73,30 +72,24 @@
             this.btnGoForm2.UseVisualStyleBackColor = true;
             this.btnGoForm2.Click += new System.EventHandler(this.btnGoForm2_Click);
             // 
-            // lblFileContact
-            // 
-            this.lblFileContact.AutoSize = true;
-            this.lblFileContact.Location = new System.Drawing.Point(375, 145);
-            this.lblFileContact.Name = "lblFileContact";
-            this.lblFileContact.Size = new System.Drawing.Size(41, 18);
-            this.lblFileContact.TabIndex = 1;
-            this.lblFileContact.Text = "渡す";
-            // 
             // txtFilePath
             // 
-            this.txtFilePath.Location = new System.Drawing.Point(184, 44);
+            this.txtFilePath.Location = new System.Drawing.Point(150, 41);
+            this.txtFilePath.Multiline = true;
             this.txtFilePath.Name = "txtFilePath";
-            this.txtFilePath.Size = new System.Drawing.Size(154, 25);
+            this.txtFilePath.ReadOnly = true;
+            this.txtFilePath.Size = new System.Drawing.Size(405, 28);
             this.txtFilePath.TabIndex = 3;
             // 
             // lblFileContent
             // 
-            this.lblFileContent.AutoSize = true;
-            this.lblFileContent.Location = new System.Drawing.Point(375, 98);
+            this.lblFileContent.AutoEllipsis = true;
+            this.lblFileContent.Location = new System.Drawing.Point(181, 72);
             this.lblFileContent.Name = "lblFileContent";
-            this.lblFileContent.Size = new System.Drawing.Size(43, 18);
+            this.lblFileContent.Size = new System.Drawing.Size(165, 76);
             this.lblFileContent.TabIndex = 4;
-            this.lblFileContent.Text = "label";
+            this.lblFileContent.Text = "\"\"";
+            this.lblFileContent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnSelectFile
             // 
@@ -204,7 +197,7 @@
             // GroupBox1
             // 
             this.GroupBox1.Controls.Add(this.lblReturn);
-            this.GroupBox1.Location = new System.Drawing.Point(43, 137);
+            this.GroupBox1.Location = new System.Drawing.Point(43, 142);
             this.GroupBox1.Name = "GroupBox1";
             this.GroupBox1.Size = new System.Drawing.Size(200, 100);
             this.GroupBox1.TabIndex = 15;
@@ -213,18 +206,20 @@
             // 
             // lblReturn
             // 
-            this.lblReturn.AutoSize = true;
-            this.lblReturn.Location = new System.Drawing.Point(68, 45);
+            this.lblReturn.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblReturn.Location = new System.Drawing.Point(24, 21);
             this.lblReturn.Name = "lblReturn";
-            this.lblReturn.Size = new System.Drawing.Size(52, 18);
+            this.lblReturn.Size = new System.Drawing.Size(157, 67);
             this.lblReturn.TabIndex = 16;
-            this.lblReturn.Text = "label3";
+            this.lblReturn.Text = "\"\"";
+            this.lblReturn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblFileContent);
             this.Controls.Add(this.GroupBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -236,15 +231,13 @@
             this.Controls.Add(this.btnFileUpdate);
             this.Controls.Add(this.btnShowContent);
             this.Controls.Add(this.btnSelectFile);
-            this.Controls.Add(this.lblFileContent);
             this.Controls.Add(this.txtFilePath);
-            this.Controls.Add(this.lblFileContact);
             this.Controls.Add(this.btnGoForm2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load_1);
             this.GroupBox1.ResumeLayout(false);
-            this.GroupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,7 +246,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnGoForm2;
-        private System.Windows.Forms.Label lblFileContact;
         private System.Windows.Forms.TextBox txtFilePath;
         private System.Windows.Forms.Label lblFileContent;
         private System.Windows.Forms.Button btnSelectFile;

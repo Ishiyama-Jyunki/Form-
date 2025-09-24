@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Form_
 {
@@ -14,11 +15,13 @@ namespace Form_
     {
         public string ReturnValue { get; private set; } = "";
         private readonly string _receivedValue;
-        public Form2(string formForm1Value)
+        public Form2(string form1Value)
         {
             InitializeComponent();
+
+            _receivedValue = form1Value ?? "";
             lblfromForm1.Text = _receivedValue;
-            _receivedValue = formForm1Value ?? "";
+           
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -32,21 +35,18 @@ namespace Form_
 
         private void btnSplit_Click(object sender, EventArgs e)
         {
-            var src = (lblfromForm1.Text ?? "").Trim();
+            var src = (lblfromForm1.Text ?? "");
 
             var parts = (src.Length == 0)
                 ? new string[0]
                 : src.Split(new[] { ',', '，' }, StringSplitOptions.RemoveEmptyEntries);
 
-            string p1 = parts.Length > 0 ? parts[0].Trim() : "";
-            string p2 = parts.Length > 1 ? parts[1].Trim() : "";
-            string p3 = parts.Length > 2 ? parts[2].Trim() : "";
-            string p4 = parts.Length > 3 ? parts[3].Trim() : "";
+           
 
-            txt1.Text = p1;
-            txt2.Text = p2;
-            txt3.Text = p3;
-            txt4.Text = p4;
+            txt1.Text = parts.ElementAtOrDefault(0) ?? "";
+            txt2.Text = parts.ElementAtOrDefault(1) ?? "";
+            txt3.Text = parts.ElementAtOrDefault(2) ?? "";
+            txt4.Text = parts.ElementAtOrDefault(3) ?? "";
 
             lblfromForm1.Text = _receivedValue;
         }
@@ -61,7 +61,12 @@ namespace Form_
 
         private void btnTrimAll_Click(object sender, EventArgs e)
         {
-
+            foreach (var tb in new[] { txt1, txt2, txt3, txt4 })
+            {
+                var s = tb.Text ?? string.Empty;
+                s = Regex.Replace(s, @"\s|\u3000", string.Empty);
+                tb.Text = s;
+            }
         }
 
         private void btnJoin_Click(object sender, EventArgs e)
@@ -79,6 +84,8 @@ namespace Form_
             this.ReturnValue = joined;
         }
 
+       
+
         private void btnLoop_Click(object sender, EventArgs e)
         {
             rtbResult.Clear();
@@ -95,33 +102,9 @@ namespace Form_
             }
         }
 
-        private void UpdateResult()
-        {
-           rtbResult.Text = $"{txt1.Text},{txt2.Text},{txt3.Text},{txt4.Text}";
+       
 
-           int steps = (int)nudSteps.Value;
-              rtbResult.AppendText($"\nSteps: {steps}");
-        }
 
-        private void txt1_TextChanged(object sender, EventArgs e)
-        {
-            UpdateResult();
-        }
-
-        private void txt2_TextChanged(object sender, EventArgs e)
-        {
-            UpdateResult();
-        }
-
-        private void txt3_TextChanged(object sender, EventArgs e)
-        {
-            UpdateResult();
-        }
-
-        private void txt4_TextChanged(object sender, EventArgs e)
-        {
-            UpdateResult();
-        }
 
         private void nudSteps_ValueChanged(object sender, EventArgs e)
         {
@@ -129,6 +112,8 @@ namespace Form_
             int steps = (int)nudSteps.Value;
             rtbResult.AppendText($"Steps: {steps}\n");
         }
+
+       
     }
 
 

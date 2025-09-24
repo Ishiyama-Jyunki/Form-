@@ -38,7 +38,6 @@
             this.txt4 = new System.Windows.Forms.TextBox();
             this.rtbResult = new System.Windows.Forms.RichTextBox();
             this.nudSteps = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -54,9 +53,12 @@
             // 
             // txtJoin
             // 
-            this.txtJoin.Location = new System.Drawing.Point(12, 110);
+            this.txtJoin.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtJoin.Location = new System.Drawing.Point(12, 115);
+            this.txtJoin.Multiline = true;
             this.txtJoin.Name = "txtJoin";
-            this.txtJoin.Size = new System.Drawing.Size(101, 25);
+            this.txtJoin.ReadOnly = true;
+            this.txtJoin.Size = new System.Drawing.Size(177, 67);
             this.txtJoin.TabIndex = 1;
             // 
             // btnClose
@@ -71,35 +73,31 @@
             // 
             // txt1
             // 
-            this.txt1.Location = new System.Drawing.Point(207, 58);
+            this.txt1.Location = new System.Drawing.Point(239, 60);
             this.txt1.Name = "txt1";
             this.txt1.Size = new System.Drawing.Size(101, 25);
             this.txt1.TabIndex = 3;
-            this.txt1.TextChanged += new System.EventHandler(this.txt1_TextChanged);
             // 
             // txt2
             // 
-            this.txt2.Location = new System.Drawing.Point(207, 98);
+            this.txt2.Location = new System.Drawing.Point(239, 104);
             this.txt2.Name = "txt2";
             this.txt2.Size = new System.Drawing.Size(101, 25);
             this.txt2.TabIndex = 4;
-            this.txt2.TextChanged += new System.EventHandler(this.txt2_TextChanged);
             // 
             // txt3
             // 
-            this.txt3.Location = new System.Drawing.Point(207, 142);
+            this.txt3.Location = new System.Drawing.Point(239, 144);
             this.txt3.Name = "txt3";
             this.txt3.Size = new System.Drawing.Size(101, 25);
             this.txt3.TabIndex = 5;
-            this.txt3.TextChanged += new System.EventHandler(this.txt3_TextChanged);
             // 
             // txt4
             // 
-            this.txt4.Location = new System.Drawing.Point(207, 184);
+            this.txt4.Location = new System.Drawing.Point(239, 189);
             this.txt4.Name = "txt4";
             this.txt4.Size = new System.Drawing.Size(101, 25);
             this.txt4.TabIndex = 6;
-            this.txt4.TextChanged += new System.EventHandler(this.txt4_TextChanged);
             // 
             // rtbResult
             // 
@@ -112,19 +110,15 @@
             // nudSteps
             // 
             this.nudSteps.Location = new System.Drawing.Point(583, 60);
+            this.nudSteps.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
             this.nudSteps.Name = "nudSteps";
             this.nudSteps.Size = new System.Drawing.Size(120, 25);
             this.nudSteps.TabIndex = 8;
             this.nudSteps.ValueChanged += new System.EventHandler(this.nudSteps_ValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(204, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 18);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "取得値";
             // 
             // imageList1
             // 
@@ -135,7 +129,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(204, 37);
+            this.label2.Location = new System.Drawing.Point(236, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 18);
             this.label2.TabIndex = 10;
@@ -146,29 +140,29 @@
             this.button1.BackColor = System.Drawing.Color.Green;
             this.button1.Location = new System.Drawing.Point(583, 156);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 35);
+            this.button1.Size = new System.Drawing.Size(133, 47);
             this.button1.TabIndex = 11;
             this.button1.Text = "空白削除B";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.btnTrimEdge_Click);
+            this.button1.Click += new System.EventHandler(this.btnTrimAll_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Green;
             this.button2.Location = new System.Drawing.Point(583, 104);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(108, 36);
+            this.button2.Size = new System.Drawing.Size(133, 46);
             this.button2.TabIndex = 12;
             this.button2.Text = "空白削除A";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.btnTrimAll_Click);
+            this.button2.Click += new System.EventHandler(this.btnTrimEdge_Click);
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Yellow;
             this.button3.Location = new System.Drawing.Point(583, 209);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(108, 30);
+            this.button3.Size = new System.Drawing.Size(133, 40);
             this.button3.TabIndex = 13;
             this.button3.Text = "分割";
             this.button3.UseVisualStyleBackColor = false;
@@ -177,9 +171,9 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.Yellow;
-            this.button4.Location = new System.Drawing.Point(583, 245);
+            this.button4.Location = new System.Drawing.Point(583, 255);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(108, 30);
+            this.button4.Size = new System.Drawing.Size(133, 45);
             this.button4.TabIndex = 14;
             this.button4.Text = "形成";
             this.button4.UseVisualStyleBackColor = false;
@@ -216,7 +210,7 @@
             // lblfromForm1
             // 
             this.lblfromForm1.AutoSize = true;
-            this.lblfromForm1.Location = new System.Drawing.Point(12, 9);
+            this.lblfromForm1.Location = new System.Drawing.Point(9, 21);
             this.lblfromForm1.Name = "lblfromForm1";
             this.lblfromForm1.Size = new System.Drawing.Size(106, 18);
             this.lblfromForm1.TabIndex = 0;
@@ -235,7 +229,6 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.nudSteps);
             this.Controls.Add(this.rtbResult);
             this.Controls.Add(this.txt4);
@@ -263,16 +256,15 @@
         private System.Windows.Forms.TextBox txt4;
         private System.Windows.Forms.RichTextBox rtbResult;
         private System.Windows.Forms.NumericUpDown nudSteps;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblfromForm1;
+        private System.Windows.Forms.Button button2;
     }
 }

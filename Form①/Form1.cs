@@ -34,15 +34,15 @@ namespace Form_
             if (MessageBox.Show("Form2を開きます。よろしいですか？", "確認",
                      MessageBoxButtons.OKCancel, MessageBoxIcon.Question) != DialogResult.OK) return;
 
-
-            using (var f2 = new Form2(lblFileContact.Text))
+            var valueToSend = lblFileContent.Text ?? "";
+            using (var f2 = new Form2(lblFileContent.Text))
             {
-                    if (f2.ShowDialog(this) == DialogResult.OK)
-                    
+                if (f2.ShowDialog(this) == DialogResult.OK)
+                {
 
 
-                        GroupBox1.Text = f2.ReturnValue;
-                    
+                    lblReturn.Text = f2.ReturnValue ?? "";
+                }
             }
         }
 
@@ -183,6 +183,9 @@ namespace Form_
             }
         }
 
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
 
+        }
     }
 }

@@ -97,16 +97,19 @@ namespace YourNamespace
 
                 if (rdoDays.Checked)
                 {
-                    for (int i = 1; i <= 31; i++) cmbOptions.Items.Add(i.ToString());
+                    cmbOptions.Items.AddRange(WeekDays);
                 }
                 else 
                 {
-                    for (int i = 1; i <= 10; i++) cmbOptions.Items.Add(i.ToString());
+                    cmbOptions.Items.AddRange(Months);
                 }
 
                 cmbOptions.SelectedIndex = -1;
             }
-            finally { cmbOptions.EndUpdate(); }
+            finally
+            {
+                cmbOptions.EndUpdate();
+            }
 
             ReflectSelectionToLabel();
         }
@@ -118,26 +121,13 @@ namespace YourNamespace
 
         private void ReflectSelectionToLabel()
         {
-            if (cmbOptions.SelectedItem != null)
+            if (cmbOptions.SelectedItem == null)
             {
-               var unit = rdoDays.Checked ? "Days" : "Years";
-                label2.Text = cmbOptions.SelectedItem + " " + unit;
-            }
-            else
-            {
-               foreach (Control ctrl in pnlWeek.Controls)
-               {
-                   var r = ctrl as RadioButton;
-                    if (r != null && r.Checked)
-                    {
-                          label2.Text = r.Text;
-                          return;
-                    }
-                }
-                label2.Text = "";
+                lblDays.Text = string.Empty;
+                return;
             }
 
-               
+            lblDays.Text = cmbOptions.SelectedItem.ToString();
         }
 
         private void rdoWeek_CheckedChanged(object sender, EventArgs e)
@@ -251,5 +241,12 @@ namespace YourNamespace
         {
             MessageBox.Show("チェック完了！");
         }
+
+        private static readonly string[] WeekDays =
+    { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+
+        private static readonly string[] Months =
+            { "Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.",
+      "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec." };
     }
 }
